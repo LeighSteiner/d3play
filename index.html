@@ -5,13 +5,16 @@
 </head>
 <body>
    <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
-   <script type="text/javascript">
-     d3.json('phones.json', function(error, data) {
+   <h1> BOO </h1>
+   <div id="svgHanger"></div>
+   <script type="text/javascript" defer>
+     let viz = d3.select('svgHanger').append('svg').attr('id', 'viz')
+     d3.csv('locusData/Locus_aerospace_edges-Table 1.csv', function(error, data) {
         // do something with the data here
         // console.log(error);
-        console.log(data);
+
+        console.log(HI);
      });
    </script>
-   <h1> HELLO </h1>
 </body>
 </html>
