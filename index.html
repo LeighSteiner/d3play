@@ -6,17 +6,24 @@
 </head>
 <body>
    <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
-   <h1> BOO </h1>
-   <div id="svgHanger"></div>
-   <script type="text/javascript" defer>
-     let viz = d3.select('svgHanger').append('svg').attr('id', 'viz')
+    <script type="text/javascript">
+     let viz = d3.select("#viz-wrapper")
      d3.csv('locusData/Locus_aerospace_edges-Table 1.csv', function(error, data) {
         // do something with the data here
         // console.log(error);
+          //  dots = viz.selectAll('circle')
+          //             .data(data)
+          //             .enter()
+          //             .append('circle');
 
-        console.log(HI);
+          // dots.attr('r', '100');
+          viz.append('circle').attr('class', 'why')
+
+        console.log(data);
      });
    </script>
+   <h1> HALLO </h1>
+    <svg id="viz-wrapper"></svg>
 </body>
 </html>
 
