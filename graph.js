@@ -43,7 +43,6 @@ d3.csv('locusData/Locus_aerospace_nodes-Table 1.csv', (error, data) => {
  //  .force('center', d3.forceCenter(300 / 2, 300 / 2))
 
 function findNodeById(id){
- 
   for (let i = 0; i < nodes.length; i++){
     if(nodes[i].id === id){
         return nodes[i];
@@ -62,7 +61,7 @@ function findNodeById(id){
     var edges = data.map((edge) => {
         var startNode = findNodeById(edge.Source);
         var endNode =  findNodeById(edge.Target);
-        var edgeObj = { 
+        var edgeObj = {
         x1: startNode.x,
         y1: startNode.y,
         x2: endNode.x,
@@ -71,6 +70,18 @@ function findNodeById(id){
        
        return edgeObj;
     })
+
+    let cords =  d3.select('#viz').selectAll("line .edges")
+                 .data(edges)
+                 .enter()
+                 .append("svg:line")
+                 .attr("class", "edges")
+                 .attr("x1", function(d) { return d.x1; })
+                 .attr("y1", function(d) { return d.y1; })
+                 .attr("x2", function(d) { return d.x2; })
+                 .attr("y2", function(d) { return d.y2; })
+                 .style('color', 'blue')
+
     
   });
 })

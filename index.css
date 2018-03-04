@@ -6,6 +6,9 @@
  margin: 50px;
  padding: 30px;
 }
+.edges {
+ stroke: #3d5142;
+}
 body {
  background-color: #dce5d3 ;
 }
