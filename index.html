@@ -7,34 +7,7 @@
 </head>
 <body>
    <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
-    <script type="text/javascript">
-     d3.csv('locusData/Locus_aerospace_nodes-Table 1.csv', (error, data) => {
-        // console.log('nodes', data)
-        // let dots = d3.select('#viz').selectAll('circle')
-        //             .data(data)
-        //             .enter()
-        //             .append('circle')
-        //             .attr('r', 5)
-        //             .attr('cx', (node) => node.id * 5)
-        //             .attr('cy', (node) => node.id * 20)
-  
-     })
-     d3.csv('locusData/Locus_aerospace_edges-Table 1.csv', function(error, data) {
-        console.log('edges',data);
-        // data.forEach((el) => {
-        //   d3.select('#viz').append('line').attr('x1', () => el.Source).attr('y1', 50).attr('x2', () =>  el.Target).attr('y2', 150).style('stroke', 'dimgray');
-        // })
-        // d3.select('#viz').selectAll('line')
-        // .data(data)
-        // .enter()
-        // .append('line')
-        // .attr('x1', (edge) => +edge.Source)
-        // .attr('y1', (edge) => +edge.Source)
-        // .attr('x2', (edge) => +edge.Target +30)
-        // .attr('y2', (edge) => +edge.Target+30)
-        // .style('stroke', 'green')
-           });
-   </script>
+    <script defer src="graph.js"></script>
       <svg id="viz"></svg>
 </body>
 </html>

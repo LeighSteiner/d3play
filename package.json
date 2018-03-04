@@ -1,0 +1,19 @@
+{
+  "name": "d3play",
+  "version": "1.0.0",
+  "description": "",
+  "main": "graph.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LeighSteiner/d3play.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LeighSteiner/d3play/issues"
+  },
+  "homepage": "https://github.com/LeighSteiner/d3play#readme"
+}
