@@ -22,8 +22,6 @@ d3.csv('locusData/Locus_aerospace_nodes-Table 1.csv', (error, data) => {
             }
 
         })
-
-  
          
     let points = d3.select('#viz').selectAll("circle .nodes")
                  .data(nodes)
@@ -37,25 +35,30 @@ d3.csv('locusData/Locus_aerospace_nodes-Table 1.csv', (error, data) => {
                  .style('fill','#bed8bf')
                  .style('stroke','none')
 
+    let labels = d3.select('#viz').selectAll(".label")
+                   .data(nodes)
+                   .enter()
+                   .append("text")
+                   .attr('x', (d) => (d.x-10) )
+                   .attr('y', (d) => d.y )
+                   .attr('class', 'label')
+                   .attr('stroke', 'black')
+                   .text((d) => d.name)
 
- // var simulation = d3.forceSimulation(points)
- //  .force('charge', d3.forceManyBody())
- //  .force('center', d3.forceCenter(300 / 2, 300 / 2))
-
-function findNodeById(id){
-  for (let i = 0; i < nodes.length; i++){
-    if(nodes[i].id === id){
-        return nodes[i];
-    }
-  } 
-  let dummyNode = {
-    x:0,
-    y:0, 
-    name:null,
-    id: null
-  }
-  return dummyNode;
-}  
+    function findNodeById(id){
+      for (let i = 0; i < nodes.length; i++){
+        if(nodes[i].id === id){
+            return nodes[i];
+        }
+      } 
+      let dummyNode = {
+        x:0,
+        y:0, 
+        name:null,
+        id: null
+      }
+      return dummyNode;
+    }  
 
   d3.csv('locusData/Locus_aerospace_edges-Table 1.csv', function(error, data) {
     var edges = data.map((edge) => {

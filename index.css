@@ -5,9 +5,13 @@
 .nodes{
  margin: 50px;
  padding: 30px;
+ position: relative;
+ z-index: 10;
 }
 .edges {
  stroke: #3d5142;
+ position: relative;
+ z-index: -1;
 }
 body {
  background-color: #dce5d3 ;
