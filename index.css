@@ -14,13 +14,17 @@
  z-index: -1;
  opacity: 0;
 }
+
 .label{
   opacity: 0;
+}
+.makeViz{
+ opacity: 1;
 }
 body {
  background-color: #dce5d3 ;
 }
-
+/*
 .g1:hover{
   opacity: 1;
 }
@@ -161,4 +165,4 @@ body {
 }
 .g50:hover{
   opacity: 1;
-}
+}*/

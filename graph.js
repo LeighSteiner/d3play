@@ -34,8 +34,14 @@ d3.csv('locusData/Locus_aerospace_nodes-Table 1.csv', (error, data) => {
                  .attr('r', '30')
                  .style('fill','#bed8bf')
                  .style('stroke','none')
-                 // .on("mouseover", showLabel)
-                 // .on("mouseout", hideLabel)
+                 .on("mouseover", (d) => {
+                    let id = "g"+d.id
+                    show(id)
+                 })
+                 .on("mouseout", (d) => {
+                    let id = ".g"+d.id 
+                    hide(id)
+                 })
 
 
     let labels = d3.select('#viz').selectAll(".label")
@@ -63,24 +69,17 @@ d3.csv('locusData/Locus_aerospace_nodes-Table 1.csv', (error, data) => {
       }
       return dummyNode;
     }  
-    // function showLabel() {
-    //     console.log('coming', this)
-    //   d3.select('#viz').selectAll('.label')
-    //   .data(this)
-    //   .enter()
-    //   .append('text')
-    //   .attr('x', (d) => d.x)
-    //   .attr('y', (d) => d.y)
-    //   .attr('class', 'label')
-    //   .attr('id', 'circleLabel')
-    //   .attr('stroke', 'black')
-    //   .text((d) => d.name)
-    // }
-    // function hideLabel(){
-    //     console.log('going')
-    //     let id = "#circleLabel"
-    //   d3.select(id).remove();
-    // }
+    function show(group) {
+        // console.log('coming')
+     let selection = d3.selectAll(group)
+     console.log(selection)
+     // .classed("makeViz", true)
+    }
+    function hide(group){
+        console.log('going')
+     d3.selectAll(group)
+     .classed("makeViz", false)
+    }
 
   d3.csv('locusData/Locus_aerospace_edges-Table 1.csv', function(error, data) {
     var edges = data.map((edge) => {
