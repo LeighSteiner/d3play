@@ -43,26 +43,35 @@ d3.csv('locusData/Locus_aerospace_nodes-Table 1.csv', (error, data) => {
  //  .force('center', d3.forceCenter(300 / 2, 300 / 2))
 
 function findNodeById(id){
+ 
   for (let i = 0; i < nodes.length; i++){
     if(nodes[i].id === id){
         return nodes[i];
     }
   } 
+  let dummyNode = {
+    x:0,
+    y:0, 
+    name:null,
+    id: null
+  }
+  return dummyNode;
 }  
 
   d3.csv('locusData/Locus_aerospace_edges-Table 1.csv', function(error, data) {
-    let edges = data.map((edge) => {
-        var startNode = findNodeById(edge['Source ']);
+    var edges = data.map((edge) => {
+        var startNode = findNodeById(edge.Source);
         var endNode =  findNodeById(edge.Target);
-        let edgeObj = { 
+        var edgeObj = { 
         x1: startNode.x,
         y1: startNode.y,
         x2: endNode.x,
         y2: endNode.y,
        }
+       
        return edgeObj;
     })
-    console.log('EDGES', edges)
+    
   });
 })
 
