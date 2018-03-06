@@ -35,7 +35,7 @@ d3.csv('locusData/Locus_aerospace_nodes-Table 1.csv', (error, data) => {
                  .style('fill','#bed8bf')
                  .style('stroke','none')
                  .on("mouseover", (d) => {
-                    let id = "g"+d.id
+                    let id = ".g"+d.id
                     show(id)
                  })
                  .on("mouseout", (d) => {
@@ -55,7 +55,7 @@ d3.csv('locusData/Locus_aerospace_nodes-Table 1.csv', (error, data) => {
                    .text((d) => d.name)
                   
 
-    function findNodeById(id){
+   function findNodeById(id){
       for (let i = 0; i < nodes.length; i++){
         if(nodes[i].id === id){
             return nodes[i];
@@ -70,13 +70,10 @@ d3.csv('locusData/Locus_aerospace_nodes-Table 1.csv', (error, data) => {
       return dummyNode;
     }  
     function show(group) {
-        // console.log('coming')
      let selection = d3.selectAll(group)
-     console.log(selection)
-     // .classed("makeViz", true)
+     .classed("makeViz", true)
     }
     function hide(group){
-        console.log('going')
      d3.selectAll(group)
      .classed("makeViz", false)
     }
@@ -114,7 +111,7 @@ d3.csv('locusData/Locus_aerospace_nodes-Table 1.csv', (error, data) => {
                      .append("text")
                      .attr("class", (d) => "g"+d.g+" endLabel")
                      .attr('x', (d) => (d.x2 ) )
-                     .attr('y', (d) => d.y1 )
+                     .attr('y', (d) => d.y2 )
                      .text((d) => d.endLabel)
 
 
