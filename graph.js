@@ -86,13 +86,13 @@ d3.csv('locusData/Locus_aerospace_nodes-Table 1.csv', (error, data) => {
         var startNode = findNodeById(edge.Source);
         var endNode =  findNodeById(edge.Target);
         var edgeObj = {
-        x1: startNode.x,
-        y1: startNode.y,
-        x2: endNode.x,
-        y2: endNode.y,
-        g: startNode.id
+            x1: startNode.x,
+            y1: startNode.y,
+            x2: endNode.x,
+            y2: endNode.y,
+            g: startNode.id,
+            endLabel: endNode.name
        }
-       
        return edgeObj;
     })
 
@@ -107,7 +107,20 @@ d3.csv('locusData/Locus_aerospace_nodes-Table 1.csv', (error, data) => {
                  .attr("y2", function(d) { return d.y2; })
                  .style('color', 'blue')
 
+    //for full relational visibility 
+    let endLabels = d3.select('#viz').selectAll('.endLabel')
+                     .data(edges)
+                     .enter()
+                     .append("text")
+                     .attr("class", (d) => "g"+d.g+" endLabel")
+                     .attr('x', (d) => (d.x2 ) )
+                     .attr('y', (d) => d.y1 )
+                     .text((d) => d.endLabel)
+
+
     
   });
+
+  
 })
 

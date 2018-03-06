@@ -18,6 +18,9 @@
 .label{
   opacity: 0;
 }
+.endLabel{
+  opacity: 0;
+}
 .makeViz{
  opacity: 1;
 }
