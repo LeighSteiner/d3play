@@ -35,45 +35,45 @@ d3.csv('locusData/Locus_aerospace_nodes-Table 1.csv', (error, data) => {
             fill = '#2b9613'
           }
             return {
-              "x" : x, 
-              "y" : y,
-              "name": node.label, 
-              "id": node.id,
-              stroke: stroke,
-              fill: fill,
+              'x' : x, 
+              'y' : y,
+              'name': node.label, 
+              'id': node.id,
+              'stroke': stroke,
+              'fill': fill,
             }
 
         })
 
-    let points = d3.select('#viz').selectAll("circle .nodes")
+    let points = d3.select('#viz').selectAll('circle .nodes')
                  .data(nodes)
                  .enter()
-                 .append("svg:circle")
-                 .attr('class', (d) => "g"+d.id+" nodes")
+                 .append('svg:circle')
+                 .attr('class', (d) => 'g'+d.id+' nodes')
                  .attr('id', (d) => d.id)
-                 .attr("cx", (d) => d.x)
-                 .attr("cy", (d) => d.y)
+                 .attr('cx', (d) => d.x)
+                 .attr('cy', (d) => d.y)
                  .attr('r', '30')
                  .style('fill', (d) => d.fill )
                  .style('stroke',(d) => d.stroke )
                  .style('stroke-width', '3')
-                 .on("mouseover", (d) => {
-                    let id = ".g"+d.id
+                 .on('mouseover', (d) => {
+                    let id = '.g'+d.id
                     show(id)
                  })
-                 .on("mouseout", (d) => {
-                    let id = ".g"+d.id 
+                 .on('mouseout', (d) => {
+                    let id = '.g'+d.id 
                     hide(id)
                  })
 
 
-    let labels = d3.select('#viz').selectAll(".label")
+    let labels = d3.select('#viz').selectAll('.label')
                    .data(nodes)
                    .enter()
-                   .append("text")
+                   .append('text')
                    .attr('x', (d) => (d.x-10) )
                    .attr('y', (d) => d.y + 60 )
-                   .attr('class', (d) => "g"+d.id+" label")
+                   .attr('class', (d) => 'g'+d.id+' label')
                    .attr('stroke', '#28440c')
                    .text((d) => d.name)
 
@@ -96,11 +96,11 @@ d3.csv('locusData/Locus_aerospace_nodes-Table 1.csv', (error, data) => {
     }  
     function show(group) {
      let selection = d3.selectAll(group)
-     .classed("makeViz", true)
+     .classed('makeViz', true)
     }
     function hide(group){
      d3.selectAll(group)
-     .classed("makeViz", false)
+     .classed('makeViz', false)
     }
 
   d3.csv('locusData/Locus_aerospace_edges-Table 1.csv', function(error, data) {
@@ -108,15 +108,15 @@ d3.csv('locusData/Locus_aerospace_nodes-Table 1.csv', (error, data) => {
         var startNode = findNodeById(edge.Source);
         var endNode =  findNodeById(edge.Target);
         var edgeObj = {
-            x1: startNode.x,
-            y1: startNode.y,
-            x2: endNode.x,
-            y2: endNode.y,
-            g: startNode.id,
-            endLabel: endNode.name
+            'x1': startNode.x,
+            'y1': startNode.y,
+            'x2': endNode.x,
+            'y2': endNode.y,
+            'g': startNode.id,
+            'endLabel': endNode.name
        }
 
-       //handling overlap/view control
+    //handling overlap/view control
        if(edgeObj.x1 > edgeObj.x2){
         edgeObj.x1 = edgeObj.x1 -30;
        }else{
@@ -126,18 +126,18 @@ d3.csv('locusData/Locus_aerospace_nodes-Table 1.csv', (error, data) => {
        return edgeObj;
     })
 
-    let cords =  d3.select('#viz').selectAll("line .edges")
+    let cords =  d3.select('#viz').selectAll('line .edges')
                  .data(edges)
                  .enter()
-                 .append("svg:line")
+                 .append('svg:line')
                  .attr("class", (d)=> "g"+ d.g+ " edges")
-                 .attr("x1", function(d) { return d.x1; })
-                 .attr("y1", function(d) { return d.y1; })
-                 .attr("x2", function(d) { return d.x2; })
-                 .attr("y2", function(d) { return d.y2; })
+                 .attr("x1", (d) => d.x1)
+                 .attr("y1", (d) => d.y1)
+                 .attr("x2", (d) => d.x2)
+                 .attr("y2", (d) => d.y2)
                  .attr('stroke', "#172b03")
                  .attr('width', '2px')
-                 // .style('color', 'blue')
+                 
 
     //for full relational visibility 
     let endLabels = d3.select('#viz').selectAll('.endLabel')
@@ -149,11 +149,6 @@ d3.csv('locusData/Locus_aerospace_nodes-Table 1.csv', (error, data) => {
                      .attr('y', (d) => d.y2+ 60 )
                      .text((d) => d.endLabel)
                      .attr('stroke','#3f7a04')
-
-
-    
   });
-
-  
 })
 

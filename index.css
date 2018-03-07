@@ -5,23 +5,19 @@
 .nodes{
  margin: 50px;
  padding: 30px;
- position: relative;
- z-index: 10;
 }
 .edges {
  stroke: #3d5142;
- position: relative;
- z-index: -1;
  display: none;
 }
 
 .label{
-   display: none;
-   font-family: 'Rajdhani', sans-serif;
+  display: none;
+  font-family: 'Rajdhani', sans-serif;
 }
 .endLabel{
-   display: none;
-   font-family: 'Rajdhani', sans-serif;
+  display: none;
+  font-family: 'Rajdhani', sans-serif;
 }
 .makeViz{
   display: block;
@@ -29,7 +25,6 @@
 h1 {
  font-family: 'Rajdhani', sans-serif;
  text-align: center;
- padding: 0;
 }
 body {
  background-color: #dce5d3 ;
