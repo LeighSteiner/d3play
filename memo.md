@@ -1,5 +1,5 @@
 # Seattle Aerospace Graph
-==========================
+
 
 	This was a fun challenge particularly because the data itself left
 so many questions to be answered -- without knowing more about the particular
