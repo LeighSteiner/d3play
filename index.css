@@ -17,18 +17,24 @@
 
 .label{
    display: none;
+   font-family: 'Rajdhani', sans-serif;
 }
 .endLabel{
    display: none;
+   font-family: 'Rajdhani', sans-serif;
 }
 .makeViz{
   display: block;
+}
+h1 {
+ font-family: 'Rajdhani', sans-serif;
+ display: inline;
 }
 body {
  background-color: #dce5d3 ;
  overflow: scroll;
 }
-/*overflow y scroll
-move labels so that they're not on the circles
-fix end label positioning 
-*/
+
+
+
+

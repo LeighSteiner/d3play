@@ -1,6 +1,7 @@
 d3.csv('locusData/Locus_aerospace_nodes-Table 1.csv', (error, data) => {
         let xCount = 40;
         let yCount = 10;
+
         var nodes = data.map((node, ind) => {
           let x 
           let y
@@ -14,11 +15,32 @@ d3.csv('locusData/Locus_aerospace_nodes-Table 1.csv', (error, data) => {
             yCount = yCount +150;
             y = yCount
           }
+          let stroke, fill
+          if(node.Activity[0] == '1'){
+            stroke = '#232802'
+          }else if(node.Activity[0] == '2'){
+            stroke = '#4b5601'
+          }else if(node.Activity[0] == '3'){
+            stroke = '#9bb203'
+          }else{
+            stroke =  '#dffc1e'
+          }
+          if(node.Object[0] == 'B'){
+            fill = '#ebf9e8'
+          }else if(node.Object[0] == 'C'){
+            fill = '#aad6a0'
+          }else if(node.Object[0] == 'D'){
+            fill = '#407534'
+          }else{
+            fill = '#2b9613'
+          }
             return {
               "x" : x, 
               "y" : y,
               "name": node.label, 
-              "id": node.id
+              "id": node.id,
+              stroke: stroke,
+              fill: fill,
             }
 
         })
@@ -29,11 +51,12 @@ d3.csv('locusData/Locus_aerospace_nodes-Table 1.csv', (error, data) => {
                  .append("svg:circle")
                  .attr('class', (d) => "g"+d.id+" nodes")
                  .attr('id', (d) => d.id)
-                 .attr("cx", function(d) { return d.x; })
-                 .attr("cy", function(d) { return d.y; })
+                 .attr("cx", (d) => d.x)
+                 .attr("cy", (d) => d.y)
                  .attr('r', '30')
-                 .style('fill','#bed8bf')
-                 .style('stroke','none')
+                 .style('fill', (d) => d.fill )
+                 .style('stroke',(d) => d.stroke )
+                 .style('stroke-width', '3')
                  .on("mouseover", (d) => {
                     let id = ".g"+d.id
                     show(id)
@@ -49,10 +72,12 @@ d3.csv('locusData/Locus_aerospace_nodes-Table 1.csv', (error, data) => {
                    .enter()
                    .append("text")
                    .attr('x', (d) => (d.x-10) )
-                   .attr('y', (d) => d.y )
+                   .attr('y', (d) => d.y + 60 )
                    .attr('class', (d) => "g"+d.id+" label")
-                   .attr('stroke', 'black')
+                   .attr('stroke', '#28440c')
                    .text((d) => d.name)
+
+
                   
 
    function findNodeById(id){
@@ -90,6 +115,14 @@ d3.csv('locusData/Locus_aerospace_nodes-Table 1.csv', (error, data) => {
             g: startNode.id,
             endLabel: endNode.name
        }
+
+       //handling overlap/view control
+       if(edgeObj.x1 > edgeObj.x2){
+        edgeObj.x1 = edgeObj.x1 -30;
+       }else{
+        edgeObj.x1 = edgeObj.x1 +30;
+       }
+
        return edgeObj;
     })
 
@@ -102,7 +135,9 @@ d3.csv('locusData/Locus_aerospace_nodes-Table 1.csv', (error, data) => {
                  .attr("y1", function(d) { return d.y1; })
                  .attr("x2", function(d) { return d.x2; })
                  .attr("y2", function(d) { return d.y2; })
-                 .style('color', 'blue')
+                 .attr('stroke', "#172b03")
+                 .attr('width', '2px')
+                 // .style('color', 'blue')
 
     //for full relational visibility 
     let endLabels = d3.select('#viz').selectAll('.endLabel')
@@ -110,9 +145,10 @@ d3.csv('locusData/Locus_aerospace_nodes-Table 1.csv', (error, data) => {
                      .enter()
                      .append("text")
                      .attr("class", (d) => "g"+d.g+" endLabel")
-                     .attr('x', (d) => (d.x2 ) )
-                     .attr('y', (d) => d.y2 )
+                     .attr('x', (d) => (d.x2-40 ) )
+                     .attr('y', (d) => d.y2+ 60 )
                      .text((d) => d.endLabel)
+                     .attr('stroke','#3f7a04')
 
 
     
